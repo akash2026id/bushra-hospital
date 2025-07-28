@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bushra Hospital Satkhira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #f8f9fa;
+            --accent-color: #e8f0fe;
+            --text-color: #202124;
+            --light-text: #5f6368;
+            --border-color: #dadce0;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--text-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .active {
+            color: var(--primary-color) !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .hero-content {
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #0d5bba;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Doctors Section */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .doctor-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .doctor-card:hover .doctor-img img {
+            transform: scale(1.05);
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .doctor-info p.specialty {
+            color: var(--light-text);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .doctor-info p.bio {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        /* Appointment Section */
+        .appointment-form {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .powered-by {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+        
+        /* Bangla Font Support */
+        .bangla {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        
+        /* Hidden sections */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Bushra Hospital <span>Satkhira</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" id="home-link">হোম</a></li>
+                    <li><a href="#" id="doctors-link">ডাক্তার</a></li>
+                    <li><a href="#" id="appointment-link">অ্যাপয়েন্টমেন্ট</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="bangla">বুশরা হাসপাতাল, সাতক্ষীরা</h1>
+            <p class="bangla">আধুনিক চিকিৎসা সেবা ও সুযোগ সুবিধা সহ আপনার স্বাস্থ্য সুরক্ষা আমাদের অঙ্গীকার</p>
+            <a href="#" class="btn bangla" id="appointment-btn">অ্যাপয়েন্টমেন্ট নিন</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Home Page Content -->
+        <section id="home-page">
+            <div class="section-title">
+                <h2 class="bangla">আমাদের সেবাসমূহ</h2>
+                <p class="bangla">আমরা সর্বোচ্চ মানের চিকিৎসা সেবা প্রদান করি</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <!-- Sample Doctor Cards for Home Page -->
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. আহমেদ কবির</h3>
+                        <p class="specialty bangla">কার্ডিওলজিস্ট</p>
+                        <p class="bio bangla">15 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ কার্ডিওলজিস্ট। এমবিবিএস, এমডি (কার্ডিওলজি)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. আহমেদ কবির">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. ফারহানা ইসলাম</h3>
+                        <p class="specialty bangla">গাইনোকোলজিস্ট</p>
+                        <p class="bio bangla">10 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ গাইনোকোলজিস্ট। এমবিবিএস, এফসিপিএস (গাইনোকোলজি)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. ফারহানা ইসলাম">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. রবিউল হোসেন</h3>
+                        <p class="specialty bangla">নিউরোলজিস্ট</p>
+                        <p class="bio bangla">12 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ নিউরোলজিস্ট। এমবিবিএস, পিএইচডি (নিউরোলজি)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. রবিউল হোসেন">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctors Page Content -->
+        <section id="doctors-page" class="hidden">
+            <div class="section-title">
+                <h2 class="bangla">আমাদের ডাক্তারবৃন্দ</h2>
+                <p class="bangla">অভিজ্ঞ ও দক্ষ ডাক্তারদের তালিকা</p>
+            </div>
+            
+            <div class="doctors-grid" id="doctors-list">
+                <!-- Doctors will be loaded from Firebase -->
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. আহমেদ কবির</h3>
+                        <p class="specialty bangla">কার্ডিওলজিস্ট</p>
+                        <p class="bio bangla">15 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ কার্ডিওলজিস্ট। এমবিবিএস, এমডি (কার্ডিওলজি)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. আহমেদ কবির">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. ফারহানা ইসলাম</h3>
+                        <p class="specialty bangla">গাইনোকোলজিস্ট</p>
+                        <p class="bio bangla">10 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ গাইনোকোলজিস্ট। এমবিবিএস, এফসিপিএস (গাইনোকোলজি)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. ফারহানা ইসলাম">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. রবিউল হোসেন</h3>
+                        <p class="specialty bangla">নিউরোলজিস্ট</p>
+                        <p class="bio bangla">12 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ নিউরোলজিস্ট। এমবিবিএস, পিএইচডি (নিউরোলজি)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. রবিউল হোসেন">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor">
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="bangla">ডা. সুমাইয়া আক্তার</h3>
+                        <p class="specialty bangla">পেডিয়াট্রিশিয়ান</p>
+                        <p class="bio bangla">8 বছরের অভিজ্ঞতা সহ একজন বিশেষজ্ঞ পেডিয়াট্রিশিয়ান। এমবিবিএস, ডিসিএইচ (পেডিয়াট্রিক্স)।</p>
+                        <a href="#" class="btn bangla doctor-link" data-doctor="ডা. সুমাইয়া আক্তার">অ্যাপয়েন্টমেন্ট</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Page Content -->
+        <section id="appointment-page" class="hidden">
+            <div class="section-title">
+                <h2 class="bangla">অ্যাপয়েন্টমেন্ট ফর্ম</h2>
+                <p class="bangla">আপনার প্রয়োজনীয় তথ্য প্রদান করুন</p>
+            </div>
+            
+            <div class="appointment-form">
+                <form id="patient-form">
+                    <div class="form-group">
+                        <label for="name" class="bangla">পূর্ণ নাম</label>
+                        <input type="text" id="name" class="form-control bangla" placeholder="আপনার পূর্ণ নাম লিখুন" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age" class="bangla">বয়স</label>
+                        <input type="number" id="age" class="form-control bangla" placeholder="আপনার বয়স লিখুন" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category" class="bangla">ক্যাটাগরি</label>
+                        <select id="category" class="form-control bangla" required>
+                            <option value="" selected disabled>ক্যাটাগরি নির্বাচন করুন</option>
+                            <option value="কার্ডিওলজি">কার্ডিওলজি</option>
+                            <option value="গাইনোকোলজি">গাইনোকোলজি</option>
+                            <option value="নিউরোলজি">নিউরোলজি</option>
+                            <option value="পেডিয়াট্রিক্স">পেডিয়াট্রিক্স</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="doctor" class="bangla">ডাক্তারের নাম</label>
+                        <select id="doctor" class="form-control bangla" required>
+                            <option value="" selected disabled>ডাক্তার নির্বাচন করুন</option>
+                            <option value="ডা. আহমেদ কবির">ডা. আহমেদ কবির</option>
+                            <option value="ডা. ফারহানা ইসলাম">ডা. ফারহানা ইসলাম</option>
+                            <option value="ডা. রবিউল হোসেন">ডা. রবিউল হোসেন</option>
+                            <option value="ডা. সুমাইয়া আক্তার">ডা. সুমাইয়া আক্তার</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address" class="bangla">ঠিকানা</label>
+                        <input type="text" id="address" class="form-control bangla" placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mobile" class="bangla">মোবাইল নম্বর</label>
+                        <input type="tel" id="mobile" class="form-control bangla" placeholder="আপনার মোবাইল নম্বর লিখুন" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description" class="bangla">সমস্যার বিবরণ</label>
+                        <textarea id="description" class="form-control bangla" placeholder="আপনার সমস্যার সংক্ষিপ্ত বিবরণ লিখুন"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn bangla">সাবমিট করুন</button>
+                </form>
+            </div>
+            
+            <!-- Message Section -->
+            <div class="section-title" style="margin-top: 60px;">
+                <h2 class="bangla">যোগাযোগ করুন</h2>
+                <p class="bangla">আমাদেরকে বার্তা পাঠান</p>
+            </div>
+            
+            <div class="appointment-form">
+                <form id="message-form">
+                    <div class="form-group">
+                        <label for="message-name" class="bangla">আপনার নাম</label>
+                        <input type="text" id="message-name" class="form-control bangla" placeholder="আপনার নাম লিখুন" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message-mobile" class="bangla">মোবাইল নম্বর</label>
+                        <input type="tel" id="message-mobile" class="form-control bangla" placeholder="আপনার মোবাইল নম্বর লিখুন" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message-text" class="bangla">বার্তা</label>
+                        <textarea id="message-text" class="form-control bangla" placeholder="আপনার বার্তা লিখুন" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn bangla">বার্তা পাঠান</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p class="bangla">বুশরা হাসপাতাল, সাতক্ষীরা</p>
+            <p class="bangla">যোগাযোগ: 01966061084</p>
+            <p class="bangla">ইমেইল: abuhurira.bsh.rc@gmail.com</p>
+            <p class="powered-by">Powered by MR. Abuhurira</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1fzdObawTdYIHM08W-afB_ZjEh39Z8L0",
+            authDomain: "apps-on-bot.firebaseapp.com",
+            projectId: "apps-on-bot",
+            storageBucket: "apps-on-bot.appspot.com",
+            messagingSenderId: "193541357633",
+            appId: "1:193541357633:web:fffcee8a7ac95273f006c0",
+            measurementId: "G-BL5CPFEF2W"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // DOM Elements
+        const homeLink = document.getElementById('home-link');
+        const doctorsLink = document.getElementById('doctors-link');
+        const appointmentLink = document.getElementById('appointment-link');
+        const appointmentBtn = document.getElementById('appointment-btn');
+        
+        const homePage = document.getElementById('home-page');
+        const doctorsPage = document.getElementById('doctors-page');
+        const appointmentPage = document.getElementById('appointment-page');
+        
+        const patientForm = document.getElementById('patient-form');
+        const messageForm = document.getElementById('message-form');
+        const doctorSelect = document.getElementById('doctor');
+        
+        // Navigation
+        function showPage(page) {
+            homePage.classList.add('hidden');
+            doctorsPage.classList.add('hidden');
+            appointmentPage.classList.add('hidden');
+            
+            homeLink.classList.remove('active');
+            doctorsLink.classList.remove('active');
+            appointmentLink.classList.remove('active');
+            
+            if (page === 'home') {
+                homePage.classList.remove('hidden');
+                homeLink.classList.add('active');
+            } else if (page === 'doctors') {
+                doctorsPage.classList.remove('hidden');
+                doctorsLink.classList.add('active');
+            } else if (page === 'appointment') {
+                appointmentPage.classList.remove('hidden');
+                appointmentLink.classList.add('active');
+            }
+        }
+        
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('home');
+        });
+        
+        doctorsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('doctors');
+        });
+        
+        appointmentLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('appointment');
+        });
+        
+        appointmentBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('appointment');
+        });
+        
+        // Doctor link click handler
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('doctor-link')) {
+                e.preventDefault();
+                const doctorName = e.target.getAttribute('data-doctor');
+                showPage('appointment');
+                doctorSelect.value = doctorName;
+            }
+        });
+        
+        // Check URL for doctor parameter
+        function checkUrlForDoctor() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const doctorParam = urlParams.get('doctor');
+            
+            if (doctorParam) {
+                showPage('appointment');
+                doctorSelect.value = decodeURIComponent(doctorParam);
+            }
+        }
+        
+        // Form Submission
+        patientForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const category = document.getElementById('category').value;
+            const doctor = document.getElementById('doctor').value;
+            const address = document.getElementById('address').value;
+            const mobile = document.getElementById('mobile').value;
+            const description = document.getElementById('description').value;
+            
+            // Add to Firestore
+            db.collection('appointments').add({
+                name: name,
+                age: age,
+                category: category,
+                doctor: doctor,
+                address: address,
+                mobile: mobile,
+                description: description,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                status: 'pending'
+            })
+            .then(() => {
+                alert('আপনার অ্যাপয়েন্টমেন্ট সফলভাবে জমা হয়েছে!');
+                patientForm.reset();
+            })
+            .catch((error) => {
+                console.error('Error adding document: ', error);
+                alert('দুঃখিত, একটি ত্রুটি হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।');
+            });
+        });
+        
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('message-name').value;
+            const mobile = document.getElementById('message-mobile').value;
+            const message = document.getElementById('message-text').value;
+            
+            // Add to Firestore
+            db.collection('messages').add({
+                name: name,
+                mobile: mobile,
+                message: message,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                status: 'unread'
+            })
+            .then(() => {
+                alert('আপনার বার্তা সফলভাবে পাঠানো হয়েছে!');
+                messageForm.reset();
+            })
+            .catch((error) => {
+                console.error('Error adding document: ', error);
+                alert('দুঃখিত, একটি ত্রুটি হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।');
+            });
+        });
+        
+        // Load doctors from Firebase
+        function loadDoctors() {
+            db.collection('doctors').get()
+            .then((querySnapshot) => {
+                const doctorsList = document.getElementById('doctors-list');
+                doctorsList.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const doctor = doc.data();
+                    const doctorCard = `
+                        <div class="doctor-card">
+                            <div class="doctor-img">
+                                <img src="${doctor.image || 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'}" alt="${doctor.name}">
+                            </div>
+                            <div class="doctor-info">
+                                <h3 class="bangla">${doctor.name}</h3>
+                                <p class="specialty bangla">${doctor.specialty}</p>
+                                <p class="bio bangla">${doctor.bio}</p>
+                                <a href="#" class="btn bangla doctor-link" data-doctor="${doctor.name}">অ্যাপয়েন্টমেন্ট</a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    doctorsList.innerHTML += doctorCard;
+                });
+            })
+            .catch((error) => {
+                console.error('Error getting documents: ', error);
+            });
+        }
+        
+        // Load categories from Firebase
+        function loadCategories() {
+            db.collection('categories').get()
+            .then((querySnapshot) => {
+                const categorySelect = document.getElementById('category');
+                categorySelect.innerHTML = '<option value="" selected disabled>ক্যাটাগরি নির্বাচন করুন</option>';
+                
+                querySnapshot.forEach((doc) => {
+                    const category = doc.data();
+                    const option = document.createElement('option');
+                    option.value = category.name;
+                    option.textContent = category.name;
+                    categorySelect.appendChild(option);
+                });
+            })
+            .catch((error) => {
+                console.error('Error getting documents: ', error);
+            });
+        }
+        
+        // Load doctors for select dropdown
+        function loadDoctorsForSelect() {
+            db.collection('doctors').get()
+            .then((querySnapshot) => {
+                const doctorSelect = document.getElementById('doctor');
+                doctorSelect.innerHTML = '<option value="" selected disabled>ডাক্তার নির্বাচন করুন</option>';
+                
+                querySnapshot.forEach((doc) => {
+                    const doctor = doc.data();
+                    const option = document.createElement('option');
+                    option.value = doctor.name;
+                    option.textContent = doctor.name;
+                    doctorSelect.appendChild(option);
+                });
+            })
+            .catch((error) => {
+                console.error('Error getting documents: ', error);
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+            checkUrlForDoctor();
+            loadDoctors();
+            loadCategories();
+            loadDoctorsForSelect();
+        });
+    </script>
+</body>
+</html>
